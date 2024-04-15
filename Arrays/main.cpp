@@ -33,7 +33,8 @@ void main()
 	cout << "Cредне-арифметическое элементов массива:" << Avg(arr,n)<< endl;
 	cout << "Минимальное значение элементов массива:" << minValueIn(arr,n)<<endl;
 	cout << "Максимальное значение элементов массива:" << maxValueIn(arr,n)<< endl;
-
+	cout << "Кол-во смещений элементов массива влево:"; shiftLeft(arr, n); cout << endl; 
+	cout << "Кол-во смещений элементов массива вправо:"; shiftRight(arr, n);cout << endl;
 	
 
 }
@@ -126,8 +127,8 @@ int maxValueIn(int arr[], const int n)
 //сдвигает массив на заданное число элементов влево
 void shiftLeft(int arr[], const int n)
 {
-	int shift = 0;
-	for (int i = 0; i < shift; i++)
+	int SIZE=5;
+	for (int i = 0; i < SIZE; i++)
 	{
 		int buffer = arr[0];
 		for (int i = 0; i < n; i++)
@@ -136,13 +137,13 @@ void shiftLeft(int arr[], const int n)
 		}
 		arr[n - 1] = buffer;
 	}
-	cout << "Кол-во смещений элементов массива влево:" << endl; 
+	cout << arr[n - 1] << endl;
 }
 //сдвигает массив на заданное количество элементов вправо
 void shiftRight(int arr[], const int n)
 {
-	int shift = 0;
-	for (int i = 0; i < shift; i++)
+	int SIZE=3;
+	for (int i = 0; i < SIZE; i++)
 	{
 		int buffer = arr[n - 1];
 		for (int i = n - 1; i >= 0; i--)
@@ -150,7 +151,6 @@ void shiftRight(int arr[], const int n)
 			arr[i] = arr[i - 1];
 		}
 		arr[0] = buffer;
-
 	}
-	cout << "Кол-во смещений элементов массива вправо:" << endl;
+	cout << arr[0] << endl;
 }
