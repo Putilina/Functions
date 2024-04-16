@@ -12,8 +12,8 @@ int Sum(int arr[], const int n);          //возвращает сумму эл
 double Avg(int arr[], const int n);   //возвращает средне-арифметическое элементов массива
 int minValueIn(int arr[], const int n);    //возвращает минимальное значение в массиве
 int maxValueIn(int arr[], const int n);  //возвращает максимальное значение в массиве
-void shiftLeft(int arr[], const int n);  //сдвигает массив на заданное число элементов влево
-void shiftRight(int arr[],const int n);  //сдвигает массив на заданное количество элементов вправо
+void shiftLeft(int arr[], const int n, number_of_shifts);  //сдвигает массив на заданное число элементов влево
+void shiftRight(int arr[],const int n, number_of_shifts);  //сдвигает массив на заданное количество элементов вправо
 
 void main()
 {
@@ -100,9 +100,8 @@ double Avg(int arr[], const int n)
 //возвращает минимальное значение в массиве
 int minValueIn(int arr[],const int n)
 {
-	int i = 0;
 	int min = arr[0];
-	for (int i = 0; i < n; i++);
+	for (int i = 0; i < n; i++)
 	{
 		if (arr[i] < min)
 		{
@@ -125,25 +124,22 @@ int maxValueIn(int arr[], const int n)
 	return max;
 }
 //сдвигает массив на заданное число элементов влево
-void shiftLeft(int arr[], const int n)
+void shiftLeft(int arr[], const int n, number_of_shifts)
 {
-	int SIZE=5;
-	for (int i = 0; i < SIZE; i++)
+	for (int i = 0; i < number_of_shifts; i++)
 	{
 		int buffer = arr[0];
-		for (int i = 0; i < n; i++)
+		for (int i = 1; i < n; i++)
 		{
 			arr[i] = arr[i + 1];
 		}
 		arr[n - 1] = buffer;
 	}
-	cout << arr[n - 1] << endl;
 }
 //сдвигает массив на заданное количество элементов вправо
-void shiftRight(int arr[], const int n)
+void shiftRight(int arr[], const int n,number_of_shifts)
 {
-	int SIZE=3;
-	for (int i = 0; i < SIZE; i++)
+	for (int i = 0; i <number_of_shifts; i++)
 	{
 		int buffer = arr[n - 1];
 		for (int i = n - 1; i >= 0; i--)
@@ -152,5 +148,4 @@ void shiftRight(int arr[], const int n)
 		}
 		arr[0] = buffer;
 	}
-	cout << arr[0] << endl;
 }
