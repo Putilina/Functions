@@ -12,8 +12,8 @@ int Sum(int arr[], const int n);          //возвращает сумму эл
 double Avg(int arr[], const int n);   //возвращает средне-арифметическое элементов массива
 int minValueIn(int arr[], const int n);    //возвращает минимальное значение в массиве
 int maxValueIn(int arr[], const int n);  //возвращает максимальное значение в массиве
-void shiftLeft(int arr[], const int n, number_of_shifts);  //сдвигает массив на заданное число элементов влево
-void shiftRight(int arr[],const int n, number_of_shifts);  //сдвигает массив на заданное количество элементов вправо
+void shiftLeft(int arr[], const int n,number_of_shifts);  //сдвигает массив на заданное число элементов влево
+void shiftRight(int arr[],const int n,number_of_shifts);  //сдвигает массив на заданное количество элементов вправо
 
 void main()
 {
@@ -33,10 +33,17 @@ void main()
 	cout << "Cредне-арифметическое элементов массива:" << Avg(arr,n)<< endl;
 	cout << "Минимальное значение элементов массива:" << minValueIn(arr,n)<<endl;
 	cout << "Максимальное значение элементов массива:" << maxValueIn(arr,n)<< endl;
-	cout << "Кол-во смещений элементов массива влево:"; shiftLeft(arr, n); cout << endl; 
-	cout << "Кол-во смещений элементов массива вправо:"; shiftRight(arr, n);cout << endl;
+	//cout << "Кол-во смещений элементов массива влево:"; shiftLeft(arr, n); cout << endl; 
+	//cout << "Кол-во смещений элементов массива вправо:"; shiftRight(arr, n);cout << endl;
 	
-
+	const int SIZE = 8;
+	int brr[SIZE];
+	FillRand(brr, SIZE);
+	Print(brr, SIZE);
+	cout << "Сумма элементов массива:" << Sum(brr, SIZE) << endl;
+	cout << "Средне-фрифметическое элементов массива:" << Avg(brr,SIZE) << endl;
+	cout << "Минимальное значение элементов массива:" << minValueIn(brr,SIZE) << endl;
+	cout << "Максимальное значение элементов массива:" << maxValueIn(brr,SIZE) << endl;
 }
 //функция заполняющая массив случайными числами(random)
 void FillRand(int arr[], const int n)
@@ -124,7 +131,7 @@ int maxValueIn(int arr[], const int n)
 	return max;
 }
 //сдвигает массив на заданное число элементов влево
-void shiftLeft(int arr[], const int n, number_of_shifts)
+void shiftLeft(int arr[], const int n,number_of_shifts)
 {
 	for (int i = 0; i < number_of_shifts; i++)
 	{
