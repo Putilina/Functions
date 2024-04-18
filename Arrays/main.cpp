@@ -6,9 +6,17 @@ using std::endl;
 #define tab "\t"
 
 void FillRand(int arr[], const int n);      //функция заполняющая массив случайными числами(random)
+void FillRand(double arr[], const int n);      //функция заполняющая массив случайными числами(random)
+
 void Print(int arr[], const int n);   //функция выводящия массивы на экран
+void Print(double arr[], const int n);   //функция выводящия массивы на экран
+
+
 void Sort(int arr[], const int n);          //функция,которая сортирует массив(sorting)
+
 int Sum(int arr[], const int n);          //возвращает сумму элементов массива (summa)
+double Sum(double arr[], const int n);          //возвращает сумму элементов массива (summa)
+
 double Avg(int arr[], const int n);   //возвращает средне-арифметическое элементов массива
 int minValueIn(int arr[], const int n);    //возвращает минимальное значение в массиве
 int maxValueIn(int arr[], const int n);  //возвращает максимальное значение в массиве
@@ -18,7 +26,7 @@ void shiftRight(int arr[],const int n,int number_of_shifts);  //сдвигает
 void main()
 {
 	setlocale(LC_ALL, "");
-	const int n = 10;
+	const int n = 5;
 	int arr[n];
 	FillRand(arr, n);
 	Print(arr, n);
@@ -32,12 +40,12 @@ void main()
 	cout << "Минимальное значение элементов массива:" << minValueIn(arr,n)<<endl;
 	cout << "Максимальное значение элементов массива:" << maxValueIn(arr,n)<< endl;
 	int number_of_shifts=0;
-	cout << "Введите количество сдвигов влево:";cin >> number_of_shifts;
-	shiftLeft(arr,n,number_of_shifts);
-	Print(arr, n);         //Функция для вывода массива на экран
-	cout << "Введите количество сдвигов вправо:"; cin >> number_of_shifts;
-	shiftRight(arr, n, number_of_shifts);
-	Print(arr, n);
+	//cout << "Введите количество сдвигов влево:";cin >> number_of_shifts;
+	//shiftLeft(arr,n,number_of_shifts);
+	//Print(arr, n);         //Функция для вывода массива на экран
+	//cout << "Введите количество сдвигов вправо:"; cin >> number_of_shifts;
+	//shiftRight(arr, n, number_of_shifts);
+	//Print(arr, n);
 
 	
 	const int SIZE = 8;
@@ -56,9 +64,22 @@ void FillRand(int arr[], const int n)
 	{
 		arr[i] = rand() % 100;
 	}
+}void FillRand(double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = rand() % 100;
+	}
 }
 //функция выводящия массивы на экран
 void Print(int arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << tab;
+	}
+	cout << endl;
+}void Print(double arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -84,6 +105,16 @@ void Sort(int arr[], const int n)
 }
 //возвращает сумму элементов массива (summa)
 int Sum(int arr[], const int n)
+{
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+	
+}
+double Sum(double arr[], const int n)
 {
 	int sum = 0;
 	for (int i = 0; i < n; i++)
