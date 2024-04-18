@@ -7,21 +7,40 @@ using std::endl;
 
 void FillRand(int arr[], const int n);      //функция заполняющая массив случайными числами(random)
 void FillRand(double arr[], const int n);      //функция заполняющая массив случайными числами(random)
+void FillRand(char arr[], const int n);      //функция заполняющая массив случайными числами(random)
 
 void Print(int arr[], const int n);   //функция выводящия массивы на экран
 void Print(double arr[], const int n);   //функция выводящия массивы на экран
+void Print(char arr[], const int n);   //функция выводящия массивы на экран
 
 
 void Sort(int arr[], const int n);          //функция,которая сортирует массив(sorting)
+void Sort(double arr[], const int n);          //функция,которая сортирует массив(sorting)
+void Sort(char arr[], const int n);          //функция,которая сортирует массив(sorting)
 
 int Sum(int arr[], const int n);          //возвращает сумму элементов массива (summa)
 double Sum(double arr[], const int n);          //возвращает сумму элементов массива (summa)
+char Sum(char arr[], const int n);          //возвращает сумму элементов массива (summa)
 
 double Avg(int arr[], const int n);   //возвращает средне-арифметическое элементов массива
+double Avg(double arr[], const int n);   //возвращает средне-арифметическое элементов массива
+char Avg(char arr[], const int n);   //возвращает средне-арифметическое элементов массива
+
 int minValueIn(int arr[], const int n);    //возвращает минимальное значение в массиве
+double minValueIn(double arr[], const int n);    //возвращает минимальное значение в массиве
+char minValueIn(char arr[], const int n);    //возвращает минимальное значение в массиве
+
 int maxValueIn(int arr[], const int n);  //возвращает максимальное значение в массиве
+double maxValueIn(double arr[], const int n);  //возвращает максимальное значение в массиве
+char maxValueIn(char arr[], const int n);  //возвращает максимальное значение в массиве
+
 void shiftLeft(int arr[], const int n,int number_of_shifts);  //сдвигает массив на заданное число элементов влево
+void shiftLeft(double arr[], const int n,int number_of_shifts);  //сдвигает массив на заданное число элементов влево
+void shiftLeft(char arr[], const int n,int number_of_shifts);  //сдвигает массив на заданное число элементов влево
+
 void shiftRight(int arr[],const int n,int number_of_shifts);  //сдвигает массив на заданное количество элементов вправо
+void shiftRight(double arr[],const int n,int number_of_shifts);  //сдвигает массив на заданное количество элементов вправо
+void shiftRight(char arr[],const int n,int number_of_shifts);  //сдвигает массив на заданное количество элементов вправо
 
 void main()
 {
@@ -70,6 +89,12 @@ void FillRand(int arr[], const int n)
 	{
 		arr[i] = rand() % 100;
 	}
+}void FillRand(char arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = rand() % 100;
+	}
 }
 //функция выводящия массивы на экран
 void Print(int arr[], const int n)
@@ -79,7 +104,15 @@ void Print(int arr[], const int n)
 		cout << arr[i] << tab;
 	}
 	cout << endl;
-}void Print(double arr[], const int n)
+}
+void Print(double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << tab;
+	}
+	cout << endl;
+}void Print(char arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -89,6 +122,34 @@ void Print(int arr[], const int n)
 }
 //функция,которая сортирует массив(sorting)
 void Sort(int arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (arr[j] < arr[i])
+			{
+				int buffer = arr[i];
+				arr[i] = arr[j];
+				arr[j] = buffer;
+			}
+		}
+	}
+}void Sort(double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (arr[j] < arr[i])
+			{
+				int buffer = arr[i];
+				arr[i] = arr[j];
+				arr[j] = buffer;
+			}
+		}
+	}
+}void Sort(char arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -116,7 +177,16 @@ int Sum(int arr[], const int n)
 }
 double Sum(double arr[], const int n)
 {
-	int sum = 0;
+	double sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+	
+}char Sum(char arr[], const int n)
+{
+	char sum = 0;
 	for (int i = 0; i < n; i++)
 	{
 		sum += arr[i];
@@ -130,12 +200,41 @@ double Sum(double arr[], const int n)
 //возвращает средне-арифметическое элементов массива
 double Avg(int arr[], const int n)
 {
-	return Sum(arr, n) / (double)n;
+	return (double)Sum(arr, n) / n;
+}
+
+double Avg(double arr[], const int n)
+{
+	return (double)Sum(arr, n) / n;
+
+
+}char Avg(char arr[], const int n)
+{
+	return (char)Sum(arr, n) / n;
 }
 //возвращает минимальное значение в массиве
 int minValueIn(int arr[],const int n)
 {
 	int min = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] < min)min = arr[i];
+	}
+	return min;
+
+}double minValueIn(double arr[],const int n)
+{
+	double min = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] < min)min = arr[i];
+	}
+	return min;
+
+
+}char minValueIn(char arr[],const int n)
+{
+	char min = arr[0];
 	for (int i = 0; i < n; i++)
 	{
 		if (arr[i] < min)min = arr[i];
@@ -151,9 +250,51 @@ int maxValueIn(int arr[], const int n)
 		if (arr[i] > max)max = arr[i];
 	}
 	return max;
+
+
+}double maxValueIn(double arr[], const int n)
+{
+	double max = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] > max)max = arr[i];
+	}
+	return max;
+
+
+}char maxValueIn(char arr[], const int n)
+{
+	char max = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] > max)max = arr[i];
+	}
+	return max;
 }
 //сдвигает массив на заданное число элементов влево
-void shiftLeft(int arr[], const int n,int number_of_shifts)
+void shiftLeft(double arr[], const int n,int number_of_shifts)
+{
+	for (int i = 0; i < number_of_shifts; i++)
+	{
+		double buffer = arr[0];
+		for (int i = 1; i < n; i++)
+		{
+			arr[i-1] = arr[i];
+		}
+		arr[n - 1] = buffer;
+	}
+}void shiftLeft(char arr[], const int n,int number_of_shifts)
+{
+	for (int i = 0; i < number_of_shifts; i++)
+	{
+		char buffer = arr[0];
+		for (int i = 1; i < n; i++)
+		{
+			arr[i-1] = arr[i];
+		}
+		arr[n - 1] = buffer;
+	}
+}void shiftLeft(int arr[], const int n,int number_of_shifts)
 {
 	for (int i = 0; i < number_of_shifts; i++)
 	{
@@ -166,16 +307,23 @@ void shiftLeft(int arr[], const int n,int number_of_shifts)
 	}
 }
 //сдвигает массив на заданное количество элементов вправо
-void shiftRight(int arr[], const int n,int number_of_shifts)
-	{                                                // for(int i-0;i<number_of_shifts;i++)
-													 //  {
-		shiftLeft(arr,n,n - number_of_shifts);											   //   int buffer = arr[n - 1];
-													  //     for (int i = n - 1; i >= 0; i--)
-	}	                                                 //      {
-		                                                      //	arr[i] = arr[i - 1];
-		                                                       // }
-		                                                           //   arr[0] = buffer;
-		
+void shiftRight(int arr[], const int n, int number_of_shifts)
+
+{
+	shiftLeft(arr, n, n - number_of_shifts);
+}
+
+void shiftRight(double arr[], const int n, int number_of_shifts)
+
+{
+	shiftLeft(arr, n, n - number_of_shifts);
+}
+
+void shiftRight(char arr[], const int n, int number_of_shifts)
+
+{
+	shiftLeft(arr, n, n - number_of_shifts);
+}
 		
 	
 

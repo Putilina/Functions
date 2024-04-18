@@ -1,0 +1,5 @@
+﻿Build started at 17:09...
+1>------ Build started: Project: Arrays, Configuration: Debug x64 ------
+1>Arrays.vcxproj -> C:\Users\Pascall\source\repos\Functions\x64\Debug\Arrays.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Build completed at 17:09 and took 00,447 seconds ==========
