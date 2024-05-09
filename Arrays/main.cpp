@@ -7,8 +7,8 @@ using std::endl;
 #define delimiter "\n----------------------------------------\n"
 
 
-const int ROWS = 3;
-const int COLS = 4;
+const int ROWS = 10;
+const int COLS = 10;
 
 void FillRand(int arr[], const int n);      //функция заполняющая массив случайными числами(random)
 void FillRand(double arr[], const int n);      //функция заполняющая массив случайными числами(random)
@@ -19,27 +19,33 @@ void FillRand(int arr[ROWS][COLS], const int ROWS,const int COLS); //функц�
 void Print(int arr[], const int n);   //функция выводящия массивы на экран
 void Print(double arr[], const int n);   //функция выводящия массивы на экран
 void Print(char arr[], const int n);   //функция выводящия массивы на экран
-
+void Print(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void Sort(int arr[], const int n);          //функция,которая сортирует массив(sorting)
 void Sort(double arr[], const int n);          //функция,которая сортирует массив(sorting)
 void Sort(char arr[], const int n);          //функция,которая сортирует массив(sorting)
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
-int Sum(int arr[], const int n);          //возвращает сумму элементов массива (summa)
+int Sum(int arr[], const int n);         //возвращает сумму элементов массива (summa)
 double Sum(double arr[], const int n);          //возвращает сумму элементов массива (summa)
 int Sum(char arr[], const int n);          //возвращает сумму элементов массива (summa)
+int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS);
+
 
 double Avg(int arr[], const int n);   //возвращает средне-арифметическое элементов массива
 double Avg(double arr[], const int n);   //возвращает средне-арифметическое элементов массива
 double Avg(char arr[], const int n);   //возвращает средне-арифметическое элементов массива
+double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int minValueIn(int arr[], const int n);    //возвращает минимальное значение в массиве
 double minValueIn(double arr[], const int n);    //возвращает минимальное значение в массиве
 char minValueIn(char arr[], const int n);    //возвращает минимальное значение в массиве
+void minValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int maxValueIn(int arr[], const int n);  //возвращает максимальное значение в массиве
 double maxValueIn(double arr[], const int n);  //возвращает максимальное значение в массиве
 char maxValueIn(char arr[], const int n);  //возвращает максимальное значение в массиве
+void maxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void shiftLeft(int arr[], const int n,int number_of_shifts);  //сдвигает массив на заданное число элементов влево
 void shiftLeft(double arr[], const int n,int number_of_shifts);  //сдвигает массив на заданное число элементов влево
@@ -48,6 +54,7 @@ void shiftLeft(char arr[], const int n,int number_of_shifts);  //сдвигае�
 void shiftRight(int arr[],const int n,int number_of_shifts);  //сдвигает массив на заданное количество элементов вправо
 void shiftRight(double arr[],const int n,int number_of_shifts);  //сдвигает массив на заданное количество элементов вправо
 void shiftRight(char arr[],const int n,int number_of_shifts);  //сдвигает массив на заданное количество элементов вправо
+
 
 void main()
 {
@@ -101,6 +108,12 @@ void main()
 	
 	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+	cout << "Сумма элементов массива:"<<Sum(i_arr_2, ROWS, COLS) << endl;
+	cout << "Средне-арифметическое элементов массива:" << Avg(i_arr_2,ROWS,COLS) << endl;
+	Sort(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+
 
 }
 //функция заполняющая массив случайными числами(random)
@@ -205,6 +218,38 @@ void Sort(int arr[], const int n)
 		}
 	}
 }
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int iterations = 0;
+	int exchanges = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					//arr[i][j]-выбранный элемент
+					//arr[k][l]<arr[i][j]
+					iterations++;
+					if(arr[k][l]<arr[i][j])
+					{
+						int buffer = arr[i][j];
+						arr[i][j] = arr[k][l];
+						arr[k][l] = buffer;
+						exchanges++;
+					}
+				}
+			}
+		}
+	}
+	cout << "Массив отсортирован за " << iterations << "итераций\n";
+	cout << "Обмен элементов:<<exchanges" << endl;
+
+}
+
+
 //возвращает сумму элементов массива (summa)
 int Sum(int arr[], const int n)
 {
