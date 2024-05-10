@@ -40,12 +40,12 @@ double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS);
 int minValueIn(int arr[], const int n);    //возвращает минимальное значение в массиве
 double minValueIn(double arr[], const int n);    //возвращает минимальное значение в массиве
 char minValueIn(char arr[], const int n);    //возвращает минимальное значение в массиве
-void minValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
+int minValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int maxValueIn(int arr[], const int n);  //возвращает максимальное значение в массиве
 double maxValueIn(double arr[], const int n);  //возвращает максимальное значение в массиве
 char maxValueIn(char arr[], const int n);  //возвращает максимальное значение в массиве
-void maxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
+int maxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void shiftLeft(int arr[], const int n,int number_of_shifts);  //сдвигает массив на заданное число элементов влево
 void shiftLeft(double arr[], const int n,int number_of_shifts);  //сдвигает массив на заданное число элементов влево
@@ -174,6 +174,18 @@ void Print(double arr[], const int n)
 	}
 	cout << endl;
 }
+void Print(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << tab;
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
 //функция,которая сортирует массив(sorting)
 void Sort(int arr[], const int n)
 {
@@ -244,8 +256,8 @@ void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
 			}
 		}
 	}
-	cout << "Массив отсортирован за " << iterations << "итераций\n";
-	cout << "Обмен элементов:<<exchanges" << endl;
+	cout << "Массив отсортирован за " << iterations << " итераций\n";
+	cout << "Обмен элементов:<< exchanges" << endl;
 
 }
 
@@ -280,6 +292,18 @@ double Sum(double arr[], const int n)
 	return sum;
 	
 }
+int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
 
 
 
@@ -298,6 +322,12 @@ double Avg(char arr[], const int n)
 {
 	return (double)Sum(arr, n) / n;
 }
+
+double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	return (double)Sum(arr, ROWS, COLS) / ROWS / COLS;
+}
+
 
 //возвращает минимальное значение в массиве
 int minValueIn(int arr[],const int n)
@@ -328,6 +358,23 @@ int minValueIn(int arr[],const int n)
 	}
 	return min;
 }
+int minValueIn(int arr[ROWS][COLS], const int ROWS, int COLS)
+{
+	int min = arr[0][0];
+
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (arr[i][j] < min)
+			{
+				min = arr[i][j];
+			}
+		}
+	}
+	return min;
+}
+
 //возвращает максимальное значение в массиве
 int maxValueIn(int arr[], const int n)
 {
@@ -357,6 +404,22 @@ int maxValueIn(int arr[], const int n)
 		if (arr[i] > max)max = arr[i];
 	}
 	return max;
+}
+
+int maxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int maxVal = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (arr[i][j] > maxVal)
+			{
+				maxVal = arr[i][j];
+			}
+		}
+	}
+	return maxVal;
 }
 //сдвигает массив на заданное число элементов влево
 void shiftLeft(double arr[], const int n,int number_of_shifts)
